@@ -4,11 +4,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'mycolumn.dart';
 import 'mycontainer.dart';
 class InputPage extends StatefulWidget {
+
   @override
   _InputPageState createState() => _InputPageState() ;
 }
 
 class _InputPageState extends State<InputPage> {
+  String? seciliCinsiyet;
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -53,13 +56,30 @@ class _InputPageState extends State<InputPage> {
             Row(
               children: [
                 Expanded(
-                  child: MyContainer(
-                      child: MyColumn(cinsiyet: 'KADIN', ikon: FontAwesomeIcons.venus),
+                  child: GestureDetector(
+                    onTap: (){
+                      setState(() {
+                        seciliCinsiyet = 'KADIN';
+                      });
+
+                    },
+                    child: MyContainer(
+                      renk: seciliCinsiyet=='KADIN'?Colors.purple : Colors.black26,
+                        child: MyColumn(cinsiyet: 'KADIN', ikon: FontAwesomeIcons.venus),
+                    ),
                   ),
                 ),
                 Expanded(
-                  child: MyContainer(
-                    child: MyColumn(cinsiyet: 'ERKEK', ikon: FontAwesomeIcons.mars)
+                  child: GestureDetector(
+                    onTap: (){
+                      setState(() {
+                        seciliCinsiyet = 'ERKEK';
+                      });
+                    },
+                    child: MyContainer(
+                      renk: seciliCinsiyet=='ERKEK'?Colors.green : Colors.white,
+                      child: MyColumn(cinsiyet: 'ERKEK', ikon: FontAwesomeIcons.mars)
+                    ),
                   ),
                 ),
               ],

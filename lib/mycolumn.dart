@@ -6,6 +6,7 @@ class MyColumn extends StatelessWidget {
   final String cinsiyet;
   final IconData ikon;
 
+
   MyColumn({this.cinsiyet ='Default', this.ikon = FontAwesomeIcons.play});
 
   @override
@@ -13,9 +14,9 @@ class MyColumn extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(ikon, size: 60, color: Colors.purple),
+        Icon(ikon, size: 60, color: Colors.black),
         SizedBox(height: 10),
-        Text(cinsiyet, style: TextStyle(color: Colors.purple,fontSize: 18,fontWeight: FontWeight.bold),
+        Text(cinsiyet, style: TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.bold),
         ),
       ],
     );

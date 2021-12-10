@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class MyContainer extends StatelessWidget {
   final Color renk;
   final Widget child;
+
   MyContainer ({this.renk = Colors.white , required this.child }); //renk yazılmadıysa default rengi beyaz olsun demiş olduk.
 
   @override
