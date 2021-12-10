@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lifeexpectancy/sabitler.dart';
 
 import 'mycolumn.dart';
 import 'mycontainer.dart';
@@ -13,7 +14,7 @@ class _InputPageState extends State<InputPage> {
   String? seciliCinsiyet;
   double icilenSigara = 0.0;
   double sporYapilanGun = 0.0;
-
+  int boy = 170;
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -37,28 +38,60 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: MyContainer(
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         new RotatedBox(
                           quarterTurns: 3,
                           child: Text(
                             'BOY',
-                            style: TextStyle(
-                              color: Colors.lightBlue,
-                              fontSize: 18,
-                            ),
+                            style: kMetinStili,
                           ),
+                        ),
+                        SizedBox(
+                          width: 18,
                         ),
                         new RotatedBox(
                           quarterTurns: 3,
                           child: Text(
-                            '170',
-                            style: TextStyle(
-                              color: Colors.lightBlue,
-                              fontSize: 18,
-                            ),
+                            '$boy', // ya da boy.toString() yazabilirdik.
+                            style: kMaviMetinStili,
                           ),
                         ),
-                        Column(),
+                        SizedBox(
+                          width: 25,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ButtonTheme(
+                              minWidth: 36,
+                              child: OutlinedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    boy++;
+                                    print('Üstteki butona tıklandı');
+                                  });
+                                },
+                                child: Icon(FontAwesomeIcons.plus, size: 10),
+                              ),
+                            ),
+                            ButtonTheme(
+                              minWidth: 36,
+                              child: OutlinedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    boy--;
+                                    print('Alttaki butona tıklandı');
+                                  });
+                                },
+                                child: Icon(
+                                  FontAwesomeIcons.minus,
+                                  size: 10,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),
@@ -74,18 +107,12 @@ class _InputPageState extends State<InputPage> {
             children: [
               Text(
                 'Haftada Kaç Gün Spor Yapıyorsunuz?',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold),
+                style: kMetinStili,
               ),
               SizedBox(height: 10),
               Text(
                 '${sporYapilanGun.round()}',
-                style: TextStyle(
-                  color: Colors.lightBlue,
-                  fontSize: 18,
-                ),
+                style: kMaviMetinStili,
               ),
               Slider(
                   min: 0.0,
@@ -106,18 +133,12 @@ class _InputPageState extends State<InputPage> {
             children: [
               Text(
                 'Günde Kaç Sigara İçiyorsunuz?',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold),
+                style: kMetinStili,
               ),
               SizedBox(height: 10),
               Text(
                 '${icilenSigara.round()}',
-                style: TextStyle(
-                  color: Colors.lightBlue,
-                  fontSize: 18,
-                ),
+                style: kMaviMetinStili,
               ),
               Slider(
                   min: 0,
