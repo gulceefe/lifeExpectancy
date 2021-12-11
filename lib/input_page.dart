@@ -15,6 +15,7 @@ class _InputPageState extends State<InputPage> {
   double icilenSigara = 0.0;
   double sporYapilanGun = 0.0;
   int boy = 170;
+  int kilo = 60;
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -37,66 +38,13 @@ class _InputPageState extends State<InputPage> {
               children: [
                 Expanded(
                   child: MyContainer(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        new RotatedBox(
-                          quarterTurns: 3,
-                          child: Text(
-                            'BOY',
-                            style: kMetinStili,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 18,
-                        ),
-                        new RotatedBox(
-                          quarterTurns: 3,
-                          child: Text(
-                            '$boy', // ya da boy.toString() yazabilirdik.
-                            style: kMaviMetinStili,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 25,
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ButtonTheme(
-                              minWidth: 36,
-                              child: OutlinedButton(
-                                onPressed: () {
-                                  setState(() {
-                                    boy++;
-                                    print('Üstteki butona tıklandı');
-                                  });
-                                },
-                                child: Icon(FontAwesomeIcons.plus, size: 10),
-                              ),
-                            ),
-                            ButtonTheme(
-                              minWidth: 36,
-                              child: OutlinedButton(
-                                onPressed: () {
-                                  setState(() {
-                                    boy--;
-                                    print('Alttaki butona tıklandı');
-                                  });
-                                },
-                                child: Icon(
-                                  FontAwesomeIcons.minus,
-                                  size: 10,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                    child: buildRowOutlineButton('BOY'),
                   ),
                 ),
-                Expanded(child: MyContainer(child: Column())),
+                Expanded(child: MyContainer(
+                    child: buildRowOutlineButton('KİLO'),
+                ),
+                ),
               ],
             ),
           ),
@@ -187,5 +135,65 @@ class _InputPageState extends State<InputPage> {
         ],
       ),
     );
+  }
+
+  Row buildRowOutlineButton(String label) {
+    return Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      new RotatedBox(
+                        quarterTurns: 3,
+                        child: Text(
+                          label,
+                          style: kMetinStili,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 18,
+                      ),
+                      new RotatedBox(
+                        quarterTurns: 3,
+                        child: Text(
+                          label=='BOY' ? boy.toString() : kilo.toString(), // ya da boy.toString() yazabilirdik.
+                          style: kMaviMetinStili,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 25,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ButtonTheme(
+                            minWidth: 36,
+                            child: OutlinedButton(
+                              onPressed: () {
+                                setState(() {
+                                  label == 'BOY' ? boy++ : kilo++ ;
+                                  print('Üstteki butona tıklandı');
+                                });
+                              },
+                              child: Icon(FontAwesomeIcons.plus, size: 10),
+                            ),
+                          ),
+                          ButtonTheme(
+                            minWidth: 36,
+                            child: OutlinedButton(
+                              onPressed: () {
+                                setState(() {
+                                  label == 'BOY' ? boy-- : kilo--;
+                                  print('Alttaki butona tıklandı');
+                                });
+                              },
+                              child: Icon(
+                                FontAwesomeIcons.minus,
+                                size: 10,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  );
   }
 }
